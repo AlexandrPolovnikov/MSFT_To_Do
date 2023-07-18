@@ -1,0 +1,21 @@
+.modal {
+    position: fixed;
+    display: none;
+}
+.modal.active {
+    // border: 1px solid red;
+    width: auto;
+    height: 40px;
+    display: grid;
+    grid-template-columns: 1fr 100px 100px;
+    color: black;
+    background: black;
+    border-radius: 12px;
+}
+
+// .modal__content {
+//     // gap: 10px;
+//     // width: 1fr;
+//     background: #0c0c0cf8;
+//     display: flex;
+// }

@@ -1,0 +1,9 @@
+.AddTasks {
+    width: auto;
+    display: flex;
+    justify-content: center;
+
+    ::placeholder {
+        color: black;
+    }
+}

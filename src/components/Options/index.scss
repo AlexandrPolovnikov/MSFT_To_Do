@@ -1,0 +1,23 @@
+.right {
+    display: none;
+
+    &.active {
+        position: absolute;
+        width: 200px;
+        height: 100vh;
+        background: #dedee4d0;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        gap: 10px;
+    }
+
+    // &__content {
+    //     color: black;
+    ::placeholder {
+        color: black;
+        // font-size: 1.5em;
+    }
+    // }
+}
