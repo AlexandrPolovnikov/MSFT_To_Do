@@ -7,6 +7,7 @@ import Modal from '../Modal/Modal';
 import { COLOR_TYPES } from '../../library/constants.enum';
 import Options from '../Options';
 import AddTasks from '../AddTasks';
+import Sun from '../Button/icons/Sun';
 
 const MyDay = () => {
     const [count, setCount] = useState('');
@@ -31,7 +32,7 @@ const MyDay = () => {
         <div>
             <div className="Information">
                 <div className="Information__header">
-                    <span>My Day</span>
+                    <Sun /> <span> Мой день</span>
                 </div>
                 <div>
                     {data.map((item: { id: number; name: string }) => (

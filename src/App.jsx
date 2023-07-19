@@ -35,7 +35,7 @@ function App() {
             <div className={active ? 'Menu active' : 'Menu'}>
                 <Button
                     className="button home-icon"
-                    text="My Day"
+                    text="Мой день"
                     onlyIcon
                     iconName={ICON_NAMES.sun}
                     onClick={() => navigate('/')}

@@ -15,7 +15,7 @@ interface ButtonProps {
     onlyIcon?: boolean;
     iconName?: ICON_NAMES;
     disabled?: boolean;
-    onClick(): void;
+    onClick?(): void;
 }
 
 const getIcon = (iconName: ICON_NAMES): JSX.Element => {

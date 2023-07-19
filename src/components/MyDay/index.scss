@@ -3,10 +3,13 @@
     grid-template-rows: 100px 1fr 50px;
 
     &__header {
+        width: 180px;
         display: flex;
+        justify-content: space-around;
         align-items: end;
         font-size: 24px;
         font-weight: 500;
+        // border: 1px solid #ccc;
     }
 
     &__list {
@@ -18,7 +21,6 @@
         align-items: center;
         background-color: rgb(30, 30, 30);
         border-radius: 6px;
-        // border: 1px solid #ccc;
     }
 
     &__items {
