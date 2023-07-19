@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../Button';
+import { COLOR_TYPES } from '../../library/constants.enum';
 
 const Timer = () => {
     const [paused, setPaused] = React.useState(false);
@@ -37,8 +38,14 @@ const Timer = () => {
                 .toString()
                 .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</p>
             <div>{over ? "Time's up!" : ''}</div>
-            <button onClick={() => setPaused(!paused)}>{paused ? 'Resume' : 'Pause'}</button>
-            <button onClick={() => reset()}>Restart</button>
+            {/* <button onClick={() => setPaused(!paused)}>{paused ? 'Resume' : 'Pause'}</button>
+            <button onClick={() => reset()}>Restart</button> */}
+            <Button
+                onClick={() => setPaused(!paused)}
+                text={paused ? 'Resume' : 'Pause'}
+                type={COLOR_TYPES.info}
+            />
+            <Button onClick={() => reset()} text="Restart" type={COLOR_TYPES.info} />
         </div>
     );
 };

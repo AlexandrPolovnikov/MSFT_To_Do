@@ -91,9 +91,9 @@
     &.info {
         background: none;
 
-        color: #4e73f9;
+        color: #8aa4ff;
         &:hover {
-            color: #355add;
+            color: #446bf6;
         }
 
         &:disabled {
@@ -105,7 +105,7 @@
 
     &.danger {
         background-color: rgba(30, 80, 255, 0.1);
-        border: 1px solid #1e50ff;
+        border: 1px solid #8aa4ff;
 
         &:hover {
             background: rgba(255, 38, 30, 0.1);

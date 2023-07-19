@@ -30,6 +30,7 @@ function App() {
                     onClick={clickActive}
                 />
                 <Input />
+                <div></div>
             </header>
             <div className={active ? 'Menu active' : 'Menu'}>
                 <Button

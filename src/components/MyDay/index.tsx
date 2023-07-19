@@ -28,20 +28,20 @@ const MyDay = () => {
     };
     if (isLoading) return <h1>Loading...</h1>;
     return (
-        <div className={taskBtn ? 'main active' : 'main'}>
+        <div>
             <div className="Information">
                 <div className="Information__header">
                     <span>My Day</span>
                 </div>
-                <ul>
+                <div>
                     {data.map((item: { id: number; name: string }) => (
                         <div className="Information__list">
-                            <li
+                            <div
                                 className="Information__items"
                                 key={item.id}
                                 onClick={() => handleTaskBtn(item.id, item.name)}>
                                 <span> {item.name}</span>
-                            </li>
+                            </div>
                             <Button
                                 onClick={() => handleDeleteProduct(item.id)}
                                 text=" 	&#10008;"
@@ -49,12 +49,12 @@ const MyDay = () => {
                             />
                         </div>
                     ))}
-                </ul>
+                </div>
                 <div className="Footer">
                     <AddTasks />
                 </div>
             </div>
-            <div>
+            <div className={taskBtn ? 'main active' : 'main'}>
                 <Options
                     data={data}
                     nameTask={nameTask}

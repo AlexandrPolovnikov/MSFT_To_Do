@@ -28,7 +28,7 @@ const AddTasks = () => {
         <div className="AddTasks" onClick={(e) => e.stopPropagation()}>
             <Input
                 type="text"
-                placeholder="Введите задачу"
+                placeholder="Добавьте задачу"
                 value={newProduct}
                 onChange={(e) => setNewProduct(e.target.value)}
             />
