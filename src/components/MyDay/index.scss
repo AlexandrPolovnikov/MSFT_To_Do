@@ -19,17 +19,17 @@
         font-weight: 100;
         font-size: 24px;
         justify-content: space-between;
-        // color: rgb(255, 254, 254);
     }
+
     &__list {
         display: grid;
-        grid-template-columns: 1fr 30px 30px;
+        width: 60vw;
+        grid-template-columns: 1fr 40px;
         gap: 10px;
         margin: 10px;
     }
 
     &__items {
-        border: 1px solid rgb(0, 0, 0);
         height: auto;
         display: grid;
         grid-template-columns: 1fr 50px;
@@ -38,7 +38,7 @@
         padding: 5px;
         border-radius: 12px;
         justify-items: start;
-        background-color: rgba(246, 252, 245, 0.999);
+        background-color: rgb(30, 30, 30);
     }
 }
 

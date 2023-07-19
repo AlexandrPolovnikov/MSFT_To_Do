@@ -16,7 +16,7 @@
     &.only-icon {
         background-color: transparent;
         padding: 0;
-        height: 40px;
+        height: 20px;
     }
 
     &.modal-button {
@@ -29,6 +29,29 @@
     &.plus-icon {
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         border-radius: 24px;
+        margin-bottom: 20px;
+
+        circle {
+            transition: 0.5s;
+        }
+
+        svg:hover {
+            fill: white;
+            circle {
+                fill: #3a3c3b;
+            }
+        }
+    }
+
+    //menu item
+    &.home-icon {
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 24px;
+        width: 190px;
+        display: grid;
+        grid-template-columns: 30px 150px;
+        align-items: center;
+        color: #ffffff;
 
         circle {
             transition: 0.5s;
@@ -66,10 +89,11 @@
     }
 
     &.info {
-        background-color: #1e50ff;
+        background: none;
 
+        color: #4e73f9;
         &:hover {
-            background-color: #1841d6;
+            color: #355add;
         }
 
         &:disabled {

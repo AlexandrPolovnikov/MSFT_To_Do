@@ -3,15 +3,16 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.166);
+
     border: 1px solid #eef2f6;
     border-radius: 8px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     padding: 8px;
     outline: none;
 
     &::placeholder {
-        color: #8f9ca9;
+        color: #ffffff;
     }
 
     &::-webkit-outer-spin-button,

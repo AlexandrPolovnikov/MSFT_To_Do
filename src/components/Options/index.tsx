@@ -3,7 +3,7 @@ import './index.scss';
 import Button from '../Button';
 import { COLOR_TYPES } from '../../library/constants.enum';
 import { useEditProductMutation } from '../../redux';
-import Input from '../Input';
+import Timer from '../Timer/Timer';
 
 const Options = ({ active, setActive, idTask, data }: any) => {
     const [updateProduct, setUpdateProduct] = useState<string>('');
@@ -25,31 +25,28 @@ const Options = ({ active, setActive, idTask, data }: any) => {
     };
 
     return (
-        <div className={active ? 'right active' : 'right'}>
-            <div className="right__content" onClick={(e) => e.stopPropagation()}>
-                <div>
-                    {data
-                        .filter((item: { id: number; name: number }) => item.id === idTask)
-                        .map((item: { id: number; name: string }) => (
-                            <div className="right__content__items" key={item.id}>
-                                <span> {item.name}</span>
-                                <Input
-                                    value={updateProduct}
-                                    type="text"
-                                    placeholder={item.name}
-                                    onClick={() => handleValue(item.name)}
-                                    onChange={(e) => setUpdateProduct(e.target.value)}
-                                />
-                                <Button
-                                    onClick={() => handleUpdateProd(item.id, item.name)}
-                                    type={COLOR_TYPES.info}
-                                    text="Обновить"
-                                />
-                            </div>
-                        ))}
-                </div>
+        <div className={active ? 'right active' : 'right'} onClick={(e) => e.stopPropagation()}>
+            <Button onClick={() => setActive(false)} type={COLOR_TYPES.info} text="Закрыть" />
+
+            {data
+                .filter((item: { id: number; name: number }) => item.id === idTask)
+                .map((item: { id: number; name: string }) => (
+                    <div className="right__content" key={item.id}>
+                        <textarea
+                            value={updateProduct}
+                            placeholder={item.name}
+                            onClick={() => handleValue(item.name)}
+                            onChange={(e) => setUpdateProduct(e.target.value)}></textarea>
+                        <Button
+                            onClick={() => handleUpdateProd(item.id, item.name)}
+                            type={COLOR_TYPES.info}
+                            text="Обновить"
+                        />
+                    </div>
+                ))}
+            <div>
+                <Timer />
             </div>
-            <Button onClick={() => setActive(false)} type={COLOR_TYPES.danger} text="Закрыть" />
         </div>
     );
 };

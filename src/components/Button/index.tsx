@@ -60,7 +60,7 @@ const getColor = (type: COLOR_TYPES | undefined): string => {
 };
 
 const Button = ({
-    text = 'No text',
+    text,
     type,
     onlyIcon,
     iconName = ICON_NAMES.close,
@@ -71,6 +71,7 @@ const Button = ({
     return onlyIcon ? (
         <button className={`button only-icon ${className}`} onClick={onClick} disabled={disabled}>
             {getIcon(iconName)}
+            {text}
         </button>
     ) : (
         <button
