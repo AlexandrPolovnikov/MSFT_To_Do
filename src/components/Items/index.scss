@@ -1,0 +1,14 @@
+.list {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    width: 94vw;
+    height: 50px;
+    padding: 5px;
+    margin: 10px;
+    align-items: center;
+    background-color: #201f1e;
+    border-radius: 6px;
+
+    &__items {
+    }
+}

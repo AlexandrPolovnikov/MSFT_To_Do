@@ -1,9 +1,20 @@
 .AddTasks {
-    width: auto;
+    width: 94vw;
+    height: 50px;
+    border-radius: 8px;
+    margin-left: 10px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #201f1e;
+
+    input {
+        width: 80vw;
+        background: none;
+    }
 
     ::placeholder {
-        color: black;
+        color: #fff;
+        background: none;
     }
 }

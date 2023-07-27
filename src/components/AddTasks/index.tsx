@@ -4,11 +4,12 @@ import { useAddProductMutation } from '../../redux';
 import Button from '../Button';
 import Input from '../Input';
 import { COLOR_TYPES } from '../../library/constants.enum';
+import { date, dateNow } from '../../library/interfaces';
 
 const AddTasks = () => {
     const [newProduct, setNewProduct] = useState('');
     const [newEmail, setNewEmail] = useState('');
-    const [newDate, setNewDate] = useState('');
+    const [newDate, setNewDate] = useState([]);
     const [addProduct, { isError }] = useAddProductMutation();
 
     const handleAddProduct = async () => {
@@ -16,11 +17,11 @@ const AddTasks = () => {
             await addProduct({
                 name: newProduct,
                 email: newEmail,
-                date: newDate,
+                date: dateNow,
             }).unwrap();
             setNewProduct('');
             setNewEmail('');
-            setNewDate('');
+            setNewDate([]);
         }
     };
 

@@ -24,7 +24,7 @@ export const goodsApi = createApi({
             }),
             invalidatesTags: [{ type: 'Products', id: 'LIST' }],
         }),
-        editProduct: build.mutation({
+        addCommit: build.mutation({
             query: (body) => ({
                 url: `goods/${body.id}`,
                 method: 'PUT',
@@ -46,5 +46,5 @@ export const {
     useGetGoodsQuery,
     useAddProductMutation,
     useDeleteProductMutation,
-    useEditProductMutation,
+    useAddCommitMutation,
 } = goodsApi;

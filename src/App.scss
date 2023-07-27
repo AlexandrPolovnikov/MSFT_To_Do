@@ -13,6 +13,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    &__icon {
+        display: flex;
+        align-items: center;
+    }
 }
 .Menu {
     display: none;

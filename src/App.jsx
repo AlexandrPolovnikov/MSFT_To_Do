@@ -23,12 +23,15 @@ function App() {
     return (
         <div className="Main">
             <header className="Header">
-                <Button
-                    className="button plus-icon"
-                    onlyIcon
-                    iconName={ICON_NAMES.plus}
-                    onClick={clickActive}
-                />
+                <div className="Header__icon">
+                    <Button
+                        className="button plus-icon"
+                        onlyIcon
+                        iconName={ICON_NAMES.profile}
+                        onClick={clickActive}
+                    />
+                    <span>To Do</span>
+                </div>
                 <Input />
                 <div></div>
             </header>

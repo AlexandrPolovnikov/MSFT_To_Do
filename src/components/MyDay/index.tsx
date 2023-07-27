@@ -1,20 +1,21 @@
 import React from 'react';
 import './index.scss';
 import { useState } from 'react';
-import { useDeleteProductMutation, useEditProductMutation, useGetGoodsQuery } from '../../redux';
+import { useDeleteProductMutation, useGetGoodsQuery } from '../../redux';
 import Button from '../Button';
-import Modal from '../Modal/Modal';
 import { COLOR_TYPES } from '../../library/constants.enum';
 import Options from '../Options';
 import AddTasks from '../AddTasks';
-import Sun from '../Button/icons/Sun';
+import Menu from '../Button/icons/Menu';
+import Items from '../Items/Items';
+import { date, dateNow, days, months } from '../../library/interfaces';
+import Completed from '../Completed';
 
 const MyDay = () => {
     const [count, setCount] = useState('');
     const [idTask, setIdTask] = useState(0);
     const [nameTask, setNameTask] = useState('');
     const [taskBtn, setTaskBtn] = useState(false);
-    const [modalActive, setModalActive] = useState(false);
     const { data = [], isLoading } = useGetGoodsQuery(count);
     const [delProduct] = useDeleteProductMutation();
 
@@ -32,27 +33,38 @@ const MyDay = () => {
         <div>
             <div className="Information">
                 <div className="Information__header">
-                    <Sun /> <span> Мой день</span>
+                    <span>
+                        <Menu /> Мой день
+                    </span>
+                    <span>
+                        {days[date.getDay()].toLocaleLowerCase()}, {date.getDate()}{' '}
+                        {months[date.getMonth()].toLocaleLowerCase()}
+                    </span>
                 </div>
-                <div>
-                    {data.map((item: { id: number; name: string }) => (
-                        <div className="Information__list">
-                            <div
-                                className="Information__items"
-                                key={item.id}
-                                onClick={() => handleTaskBtn(item.id, item.name)}>
-                                <span> {item.name}</span>
-                            </div>
-                            <Button
-                                onClick={() => handleDeleteProduct(item.id)}
-                                text=" 	&#10008;"
-                                type={COLOR_TYPES.danger}
-                            />
-                        </div>
-                    ))}
-                </div>
-                <div className="Footer">
+                <div className="Information__create">
                     <AddTasks />
+                </div>
+
+                <div>
+                    {data
+                        .filter(
+                            (item: { id: number; name: string; date?: string }) =>
+                                item.date === dateNow,
+                        )
+                        .map((item: { id: number; name: string }) => (
+                            <div className="list">
+                                <Button
+                                    onClick={() => handleDeleteProduct(item.id)}
+                                    text=" 	&#10008;"
+                                    type={COLOR_TYPES.info}
+                                />
+                                <div
+                                    className="list__items"
+                                    onClick={() => handleTaskBtn(item.id, item.name)}>
+                                    <Items name={item.name} id={item.id} />
+                                </div>
+                            </div>
+                        ))}
                 </div>
             </div>
             <div className={taskBtn ? 'main active' : 'main'}>

@@ -1,36 +1,28 @@
 .Information {
     display: grid;
-    grid-template-rows: 100px 1fr 50px;
+    grid-template-rows: 150px 50px 1fr;
 
     &__header {
-        width: 180px;
+        width: 140px;
         display: flex;
-        justify-content: space-around;
-        align-items: end;
-        font-size: 24px;
-        font-weight: 500;
-        // border: 1px solid #ccc;
-    }
-
-    &__list {
-        display: grid;
-        grid-template-columns: 1fr 40px;
-        width: 70vw;
-        padding: 5px;
-        margin: 10px;
+        flex-direction: column;
         align-items: center;
-        background-color: rgb(30, 30, 30);
-        border-radius: 6px;
+        justify-content: center;
+        font-size: 24px;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin-top: 50px;
+        :last-child {
+            font-size: 12px;
+            font-weight: 200;
+        }
     }
 
-    &__items {
+    &__create {
+        width: 94vw;
     }
 }
 
-.Footer {
-    display: flex;
-    justify-content: center;
-}
 .main {
     display: none;
 }
