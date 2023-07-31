@@ -33,9 +33,7 @@ const MyDay = () => {
         <div>
             <div className="Information">
                 <div className="Information__header">
-                    <span>
-                        <Menu /> Мой день
-                    </span>
+                    <span>Мой день</span>
                     <span>
                         {days[date.getDay()].toLocaleLowerCase()}, {date.getDate()}{' '}
                         {months[date.getMonth()].toLocaleLowerCase()}

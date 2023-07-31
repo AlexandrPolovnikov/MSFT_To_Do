@@ -4,6 +4,7 @@
 
     &__header {
         width: 140px;
+        margin-left: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -19,7 +20,7 @@
     }
 
     &__create {
-        width: 94vw;
+        width: 98vw;
     }
 }
 

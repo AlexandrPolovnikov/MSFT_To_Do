@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { COLOR_TYPES, ICON_NAMES } from '../../library/constants.enum';
 import Box from './icons/Box';
 import Close from './icons/Close';
@@ -7,6 +8,8 @@ import Profile from './icons/Profile';
 import Star from './icons/Star';
 import Sun from './icons/Sun';
 import './index.scss';
+import { useState } from 'react';
+import Menu from './icons/Menu';
 
 interface ButtonProps {
     className?: string;
@@ -40,6 +43,9 @@ const getIcon = (iconName: ICON_NAMES): JSX.Element => {
 
         case ICON_NAMES.plus:
             return <Plus />;
+
+        case ICON_NAMES.menu:
+            return <Menu />;
 
         default:
             return <></>;

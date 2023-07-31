@@ -2,6 +2,13 @@
     cursor: pointer;
     border: none;
 
+    &-menu {
+        position: absolute;
+        left: 30px;
+        top: 80px;
+        color: #ffffff;
+    }
+
     &.text {
         border-radius: 8px;
         color: #ffffff;

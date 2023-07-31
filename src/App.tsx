@@ -9,15 +9,16 @@ import { ICON_NAMES } from './library/constants.enum';
 import { useState } from 'react';
 
 function App() {
-    const [active, setActive] = useState(false);
+    const [active, setActive] = useState(true);
     const navigate = useNavigate();
 
-    const clickActive = () => {
+    const clickActive = (value: string) => {
         if (active) {
             setActive(false);
         } else {
             setActive(true);
         }
+        navigate(`/${value}`);
     };
 
     return (
@@ -25,10 +26,10 @@ function App() {
             <header className="Header">
                 <div className="Header__icon">
                     <Button
-                        className="button plus-icon"
+                        className="button-menu plus-icon"
                         onlyIcon
-                        iconName={ICON_NAMES.profile}
-                        onClick={clickActive}
+                        iconName={ICON_NAMES.menu}
+                        onClick={() => (active ? setActive(false) : setActive(true))}
                     />
                     <span>To Do</span>
                 </div>
@@ -41,28 +42,28 @@ function App() {
                     text="Мой день"
                     onlyIcon
                     iconName={ICON_NAMES.sun}
-                    onClick={() => navigate('/')}
+                    onClick={() => clickActive('')}
                 />
                 <Button
                     className="item__button home-icon"
                     text="Planned"
                     onlyIcon
                     iconName={ICON_NAMES.star}
-                    onClick={() => navigate('/planned')}
+                    onClick={() => clickActive('planned')}
                 />
                 <Button
                     className="item__button home-icon"
                     text="Completed"
                     onlyIcon
                     iconName={ICON_NAMES.box}
-                    onClick={() => navigate('/completed')}
+                    onClick={() => clickActive('completed')}
                 />
                 <Button
                     className="item__button home-icon"
                     text="Task"
                     onlyIcon
                     iconName={ICON_NAMES.home}
-                    onClick={() => navigate('/task')}
+                    onClick={() => clickActive('task')}
                 />
             </div>
             <div>
