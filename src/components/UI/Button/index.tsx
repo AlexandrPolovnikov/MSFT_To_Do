@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { COLOR_TYPES, ICON_NAMES } from '../../library/constants.enum';
+import { COLOR_TYPES, ICON_NAMES } from '../../../library/constants.enum';
 import Box from './icons/Box';
 import Close from './icons/Close';
 import Home from './icons/Home';

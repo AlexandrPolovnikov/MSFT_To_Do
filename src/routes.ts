@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import MyDay from './components/MyDay';
-import Planned from './components/Planned';
-import Task from './components/Task';
-import Completed from './components/Completed';
+import MyDay from './components/pages/MyDay';
+import Planned from './components/pages/Planned';
+import Task from './components/pages/Task';
+import Completed from './components/pages/Completed';
 
 export interface rout {
     path: string;

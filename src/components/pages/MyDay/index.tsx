@@ -1,14 +1,14 @@
 import React from 'react';
 import './index.scss';
 import { useState } from 'react';
-import { useDeleteProductMutation, useGetGoodsQuery } from '../../redux';
-import Button from '../Button';
-import { COLOR_TYPES } from '../../library/constants.enum';
-import Options from '../Options';
-import AddTasks from '../AddTasks';
-import Menu from '../Button/icons/Menu';
-import Items from '../Items/Items';
-import { date, dateNow, days, months } from '../../library/interfaces';
+import { useDeleteProductMutation, useGetGoodsQuery } from '../../../redux';
+import Button from '../../UI/Button';
+import { COLOR_TYPES } from '../../../library/constants.enum';
+import Options from '../../Options';
+import AddTasks from '../../AddTasks';
+import Menu from '../../UI/Button/icons/Menu';
+import Items from '../../Items/Items';
+import { date, dateNow, days, months } from '../../../library/interfaces';
 import Completed from '../Completed';
 
 const MyDay = () => {
@@ -65,7 +65,7 @@ const MyDay = () => {
                         ))}
                 </div>
             </div>
-            <div className={taskBtn ? 'main active' : 'main'}>
+            <div className={taskBtn ? 'main active' : 'main'} onClick={(e) => e.stopPropagation()}>
                 <Options
                     data={data}
                     nameTask={nameTask}

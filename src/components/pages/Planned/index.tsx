@@ -1,14 +1,14 @@
 import React from 'react';
 import './index.scss';
 import { useState } from 'react';
-import { useDeleteProductMutation, useGetGoodsQuery } from '../../redux';
-import Button from '../Button';
-import { COLOR_TYPES } from '../../library/constants.enum';
-import Options from '../Options';
-import AddTasks from '../AddTasks';
-import Menu from '../Button/icons/Menu';
-import Items from '../Items/Items';
-import { date, dateNow, days, months } from '../../library/interfaces';
+import { useDeleteProductMutation, useGetGoodsQuery } from '../../../redux';
+import Button from '../../UI/Button';
+import { COLOR_TYPES } from '../../../library/constants.enum';
+import Options from '../../Options';
+import AddTasks from '../../AddTasks';
+import Menu from '../../UI/Button/icons/Menu';
+import Items from '../../Items/Items';
+import { date, dateNow, days, months } from '../../../library/interfaces';
 import Completed from '../Completed';
 
 const Planned = () => {
@@ -33,9 +33,7 @@ const Planned = () => {
         <div>
             <div className="Information">
                 <div className="Information__header">
-                    <span>
-                        <Menu /> Все задачи
-                    </span>
+                    <span>Все задачи</span>
                     <span>
                         {days[date.getDay()].toLocaleLowerCase()}, {date.getDate()}{' '}
                         {months[date.getMonth()].toLocaleLowerCase()}

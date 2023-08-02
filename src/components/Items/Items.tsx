@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button';
+import Button from '../UI/Button';
 import './index.scss';
 
 const Items = (item: { id: number; name: string }) => {

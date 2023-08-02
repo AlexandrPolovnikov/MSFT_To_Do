@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './index.scss';
-import Button from '../Button';
+import Button from '../UI/Button';
 import { COLOR_TYPES } from '../../library/constants.enum';
 import { useSubTasksMutation } from '../../redux';
 import Timer from '../Timer/Timer';

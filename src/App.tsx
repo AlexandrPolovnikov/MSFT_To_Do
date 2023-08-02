@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import routes from './routes';
 import Input from './components/UI/Input';
-import Button from './components/Button';
+import Button from './components/UI/Button';
 import { ICON_NAMES } from './library/constants.enum';
 import { useState } from 'react';
 
@@ -36,7 +36,7 @@ function App() {
                 <Input />
                 <div></div>
             </header>
-            <div className={active ? 'Menu active' : 'Menu'}>
+            <div className={active ? 'Menu active' : 'Menu'} onClick={(e) => e.stopPropagation()}>
                 <Button
                     className="button home-icon"
                     text="Мой день"

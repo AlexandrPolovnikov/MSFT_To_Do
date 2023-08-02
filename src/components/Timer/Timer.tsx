@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../Button';
+import Button from '../UI/Button';
 import './index.scss';
 import { COLOR_TYPES } from '../../library/constants.enum';
 import AddTasks from '../AddTasks/index';
