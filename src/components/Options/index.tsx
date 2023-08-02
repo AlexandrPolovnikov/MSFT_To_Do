@@ -2,36 +2,27 @@ import React, { useState } from 'react';
 import './index.scss';
 import Button from '../Button';
 import { COLOR_TYPES } from '../../library/constants.enum';
-import { useAddCommitMutation } from '../../redux';
+import { useSubTasksMutation } from '../../redux';
 import Timer from '../Timer/Timer';
-import Input from '../Input';
-import { date } from '../../library/interfaces';
+import Input from '../UI/Input';
 
 const Options = ({ active, setActive, idTask, data }: any) => {
     const [updateProduct, setUpdateProduct] = useState<string>('');
     const [updateTasks, setUpdateTasks] = useState<string>('');
+    const [addSubTask] = useSubTasksMutation();
 
-    const [addTask] = useAddCommitMutation();
-
-    const handleAddTask = async (item: { id: number; name: string; date?: string }) => {
-        if (updateProduct) {
-            await addTask({
-                id: item.id,
-                name: updateProduct,
-                date: date,
-                body: {
-                    id: item.id,
-                    name: updateTasks,
-                },
-            }).unwrap();
-            setUpdateTasks('');
-            setUpdateProduct('');
-        }
+    const handleSubTasks = async (item: { id: number; name: string; date?: string }) => {
+        await addSubTask({
+            id: idTask,
+            name: updateProduct,
+            tasks: updateTasks,
+        }).unwrap();
+        setUpdateProduct('');
+        setUpdateTasks('');
     };
 
     const handleValue = async (name: string) => {
         setUpdateProduct(name);
-        setUpdateTasks(name);
     };
 
     return (
@@ -45,18 +36,22 @@ const Options = ({ active, setActive, idTask, data }: any) => {
                             placeholder={item.name}
                             onClick={() => handleValue(item.name)}
                             onChange={(e) => setUpdateProduct(e.target.value)}></textarea>
+                        <textarea
+                            value={updateTasks}
+                            placeholder="Добавить задачу?"
+                            // onClick={() => handleValue(item.name)}
+                            onChange={(e) => setUpdateTasks(e.target.value)}></textarea>
+                        <Input />
                         <Button
-                            onClick={() => handleAddTask(item)}
+                            onClick={() => handleSubTasks(item)}
                             type={COLOR_TYPES.info}
                             text="Обновить"
                         />
+                        <Timer id={item.id} />
                     </div>
                 ))}
 
-            <Input />
-            <div>
-                <Timer />
-            </div>
+            <div></div>
             <Button onClick={() => setActive(false)} type={COLOR_TYPES.info} text="Закрыть" />
         </div>
     );

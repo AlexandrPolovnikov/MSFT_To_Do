@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './modal.scss';
 import { useAddProductMutation } from '../../redux';
 import Button from '../Button';
-import Input from '../Input';
+import Input from '../UI/Input';
 
 const Modal = ({ active, setActive }) => {
     const [newProduct, setNewProduct] = useState('');

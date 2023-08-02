@@ -1,28 +1,27 @@
 {
   "goods": [
     {
-      "name": "Сегодня оживил ежедневник",
-      "email": "",
-      "date": "27.07.2023",
-      "id": 1
+      "name": "Hello World!",
+      "email": 123,
+      "date": "02.08.2023",
+      "id": 5,
+      "tasks": "",
+      "timer": {
+        "seconds": 12,
+        "minutes": 0,
+        "hours": 0
+      }
     },
     {
-      "name": "Вчерашняя задача",
+      "name": "dsada",
       "email": "",
-      "date": "26.07.2023",
-      "id": 2
-    },
-    {
-      "name": "gh",
-      "email": "",
-      "date": "30.07.2023",
-      "id": 3
-    },
-    {
-      "name": "сегодня",
-      "email": "",
-      "date": "31.07.2023",
-      "id": 4
+      "date": "02.08.2023",
+      "id": 6,
+      "timer": {
+        "seconds": 3,
+        "minutes": 0,
+        "hours": 0
+      }
     }
   ],
   "comments": [

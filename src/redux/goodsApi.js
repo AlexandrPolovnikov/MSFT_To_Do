@@ -24,10 +24,10 @@ export const goodsApi = createApi({
             }),
             invalidatesTags: [{ type: 'Products', id: 'LIST' }],
         }),
-        addCommit: build.mutation({
+        subTasks: build.mutation({
             query: (body) => ({
                 url: `goods/${body.id}`,
-                method: 'PUT',
+                method: 'PATCH',
                 body,
             }),
             invalidatesTags: [{ type: 'Products', id: 'LIST' }],
@@ -46,5 +46,5 @@ export const {
     useGetGoodsQuery,
     useAddProductMutation,
     useDeleteProductMutation,
-    useAddCommitMutation,
+    useSubTasksMutation,
 } = goodsApi;

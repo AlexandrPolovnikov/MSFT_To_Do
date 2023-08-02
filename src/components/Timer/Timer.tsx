@@ -1,53 +1,84 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../Button';
+import './index.scss';
 import { COLOR_TYPES } from '../../library/constants.enum';
+import AddTasks from '../AddTasks/index';
+import { useGetGoodsQuery, useSubTasksMutation } from '../../redux';
+import { dateNow } from '../../library/interfaces';
 
-const Timer = () => {
-    const [paused, setPaused] = React.useState(false);
-    const [over, setOver] = React.useState(false);
-    const [[hours, minutes, seconds], setTime] = React.useState<number[]>([0, 0, 0]);
+const Timer = ({ id }: any) => {
+    const [seconds, setSeconds] = useState(0);
+    const [minutes, setMinutes] = useState(0);
+    const [hours, setHours] = useState(0);
+    const [isActive, setIsActive] = useState(false);
+    const [addTimer] = useSubTasksMutation();
 
-    const tick = () => {
-        if (paused || over) return;
+    const handleAddTimer = async () => {
+        setIsActive(!isActive);
 
-        if (hours === 0 && minutes === 0 && seconds === 0) {
-            setOver(true);
-        } else if (minutes === 0 && seconds === 0) {
-            setTime([hours - 1, 59, 59]);
-        } else if (seconds === 0) {
-            setTime([hours, minutes - 1, 59]);
-        } else {
-            setTime([hours, minutes, seconds - 1]);
+        await addTimer({
+            id: id,
+            timer: {
+                seconds: seconds,
+                minutes: minutes,
+                hours: hours,
+            },
+        }).unwrap();
+    };
+
+    function toggle() {
+        setIsActive(!isActive);
+    }
+
+    function reset() {
+        setSeconds(0);
+        setMinutes(0);
+        setHours(0);
+        setIsActive(false);
+    }
+
+    useEffect(() => {
+        let interval: number | NodeJS.Timeout | undefined;
+        if (isActive) {
+            interval = setInterval(() => {
+                setSeconds((seconds) => seconds + 1);
+                if (seconds === 59) {
+                    setMinutes((minutes) => minutes + 1);
+                    setSeconds(0);
+                }
+                if (minutes === 59) {
+                    setHours((hours) => hours + 1);
+                    setMinutes(0);
+                }
+            }, 1000);
+        } else if (!isActive && seconds !== 0) {
+            clearInterval(interval);
         }
-    };
-
-    const reset = () => {
-        setTime([0, 0, 0]);
-        setPaused(false);
-        setOver(false);
-    };
-
-    React.useEffect(() => {
-        const timerID = setInterval(() => tick(), 1000);
-        return () => clearInterval(timerID);
-    });
+        return () => clearInterval(interval);
+    }, [isActive, seconds]);
 
     return (
-        <div>
-            <p>{`${hours.toString().padStart(2, '0')}:${minutes
-                .toString()
-                .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</p>
-            <div>{over ? "Time's up!" : ''}</div>
-            {/* <button onClick={() => setPaused(!paused)}>{paused ? 'Resume' : 'Pause'}</button>
-            <button onClick={() => reset()}>Restart</button> */}
-            <Button
-                onClick={() => setPaused(!paused)}
-                text={paused ? 'Resume' : 'Pause'}
-                type={COLOR_TYPES.info}
-            />
-            <Button onClick={() => reset()} text="Restart" type={COLOR_TYPES.info} />
+        <div className="Timer">
+            <div className="Timer__value">
+                {hours}: {minutes}: {seconds}
+            </div>
+            <div className="Timer__btn">
+                <Button
+                    className={`button button-primary button-primary-${
+                        isActive ? 'active' : 'inactive'
+                    }`}
+                    onClick={handleAddTimer}
+                    text={isActive ? 'Pause' : 'Start'}
+                    type={COLOR_TYPES.info}
+                />
+                <Button
+                    text="Reset"
+                    type={COLOR_TYPES.info}
+                    onClick={reset}
+                    className="button button-primary"
+                />
+            </div>
         </div>
     );
 };
-
 export default Timer;

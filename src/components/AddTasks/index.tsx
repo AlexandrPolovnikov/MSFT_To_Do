@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './index.scss';
 import { useAddProductMutation } from '../../redux';
 import Button from '../Button';
-import Input from '../Input';
+import Input from '../UI/Input';
 import { COLOR_TYPES } from '../../library/constants.enum';
 import { date, dateNow } from '../../library/interfaces';
 

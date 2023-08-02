@@ -3,13 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import routes from './routes';
-import Input from './components/Input';
+import Input from './components/UI/Input';
 import Button from './components/Button';
 import { ICON_NAMES } from './library/constants.enum';
 import { useState } from 'react';
 
 function App() {
-    const [active, setActive] = useState(true);
+    const [active, setActive] = useState(false);
     const navigate = useNavigate();
 
     const clickActive = (value: string) => {
@@ -24,13 +24,13 @@ function App() {
     return (
         <div className="Main">
             <header className="Header">
+                <Button
+                    className="button-menu plus-icon"
+                    onlyIcon
+                    iconName={ICON_NAMES.menu}
+                    onClick={() => (active ? setActive(false) : setActive(true))}
+                />
                 <div className="Header__icon">
-                    <Button
-                        className="button-menu plus-icon"
-                        onlyIcon
-                        iconName={ICON_NAMES.menu}
-                        onClick={() => (active ? setActive(false) : setActive(true))}
-                    />
                     <span>To Do</span>
                 </div>
                 <Input />
