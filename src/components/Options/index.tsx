@@ -28,8 +28,11 @@ const Options = ({ active, setActive, idTask, data }: any) => {
     return (
         <div className={active ? 'right active' : 'right'} onClick={(e) => e.stopPropagation()}>
             {data
-                .filter((item: { id: number; name: string; tasks?: string }) => item.id === idTask)
-                .map((item: { id: number; name: string; tasks?: string }) => (
+                .filter(
+                    (item: { id: number; name: string; tasks?: string; timer?: number }) =>
+                        item.id === idTask,
+                )
+                .map((item: { id: number; name: string; tasks?: string; timer?: number }) => (
                     <div className="right__content" key={item.id}>
                         <textarea
                             value={updateProduct}
@@ -47,7 +50,7 @@ const Options = ({ active, setActive, idTask, data }: any) => {
                             type={COLOR_TYPES.info}
                             text="Обновить"
                         />
-                        <Timer id={item.id} />
+                        <Timer id={item.id} timer={item.timer} />
                     </div>
                 ))}
 

@@ -4,7 +4,7 @@ import './index.scss';
 import { COLOR_TYPES } from '../../library/constants.enum';
 import { useSubTasksMutation } from '../../redux';
 
-const Timer = ({ id }: any) => {
+const Timer = ({ id }: any, { timer }: any) => {
     const [seconds, setSeconds] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [hours, setHours] = useState(0);
@@ -13,7 +13,7 @@ const Timer = ({ id }: any) => {
 
     const handleAddTimer = async () => {
         setIsActive(!isActive);
-
+        console.log(timer.seconds);
         await addTimer({
             id: id,
             timer: {
