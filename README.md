@@ -3,9 +3,9 @@
 
 # Перед началом введите команды ниже
 
-npm install
+- npm install
 
-npm run dev
+- npm run dev
 
 ---
 
