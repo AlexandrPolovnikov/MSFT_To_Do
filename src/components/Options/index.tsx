@@ -28,8 +28,8 @@ const Options = ({ active, setActive, idTask, data }: any) => {
     return (
         <div className={active ? 'right active' : 'right'} onClick={(e) => e.stopPropagation()}>
             {data
-                .filter((item: { id: number; name: string; date?: string }) => item.id === idTask)
-                .map((item: { id: number; name: string; date?: string }) => (
+                .filter((item: { id: number; name: string; tasks?: string }) => item.id === idTask)
+                .map((item: { id: number; name: string; tasks?: string }) => (
                     <div className="right__content" key={item.id}>
                         <textarea
                             value={updateProduct}
@@ -41,7 +41,7 @@ const Options = ({ active, setActive, idTask, data }: any) => {
                             placeholder="Добавить задачу?"
                             // onClick={() => handleValue(item.name)}
                             onChange={(e) => setUpdateTasks(e.target.value)}></textarea>
-                        <Input />
+                        <div>{item.tasks}</div>
                         <Button
                             onClick={() => handleSubTasks(item)}
                             type={COLOR_TYPES.info}

@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '../UI/Button';
 import './index.scss';
 import { COLOR_TYPES } from '../../library/constants.enum';
-import AddTasks from '../AddTasks/index';
-import { useGetGoodsQuery, useSubTasksMutation } from '../../redux';
-import { dateNow } from '../../library/interfaces';
+import { useSubTasksMutation } from '../../redux';
 
 const Timer = ({ id }: any) => {
     const [seconds, setSeconds] = useState(0);
@@ -25,10 +23,6 @@ const Timer = ({ id }: any) => {
             },
         }).unwrap();
     };
-
-    function toggle() {
-        setIsActive(!isActive);
-    }
 
     function reset() {
         setSeconds(0);
@@ -55,7 +49,7 @@ const Timer = ({ id }: any) => {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [isActive, seconds]);
+    }, [isActive, minutes, seconds]);
 
     return (
         <div className="Timer">

@@ -7,15 +7,16 @@
         right: 0;
         width: 360px;
         height: 100vh;
-        background-color: #252423;
+        background-color: #1b1a1a;
         display: grid;
         grid-template-rows: 0.3fr 0.3fr 1fr 30px;
         gap: 10px;
+        justify-content: center;
     }
 
     &__content {
         display: grid;
-        grid-template-rows: 70px 30px;
+        grid-template-rows: 70px 60px;
         gap: 10px;
         ::placeholder {
             color: aliceblue;
@@ -27,4 +28,5 @@ textarea {
     border: none;
     outline: none;
     color: #fff;
+    width: 330px;
 }
