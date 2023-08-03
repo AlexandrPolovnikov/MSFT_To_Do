@@ -1,7 +1,7 @@
-#Нажмите на ссылку для просмотра [MST To Do] (https://alexandrpolovnikov.github.io/mcrsft-to-do/)
+# Нажмите на ссылку для просмотра [MST To Do](https://alexandrpolovnikov.github.io/mcrsft-to-do/)
 
 
-#Перед началом введите команды ниже
+# Перед началом введите команды ниже
 
 npm install
 
