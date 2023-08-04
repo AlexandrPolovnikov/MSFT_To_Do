@@ -1,4 +1,4 @@
-# Нажмите на ссылку для просмотра [MST To Do](https://alexandrpolovnikov.github.io/mcrsft-to-do/)
+# Нажмите на ссылку для просмотра [MST To Do](https://msft-to-do-id1.web.app/)
 
 
 # Перед началом введите команды ниже
