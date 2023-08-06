@@ -13,34 +13,16 @@
       }
     },
     {
-      "name": "dsada",
+      "name": "122",
       "email": "",
-      "date": "02.08.2023",
-      "id": 6,
-      "timer": {
-        "seconds": 3,
-        "minutes": 0,
-        "hours": 0
-      },
-      "tasks": ""
+      "date": "04.08.2023",
+      "id": 6
     },
     {
       "name": "123",
       "email": "",
-      "date": "03.08.2023",
-      "id": 7,
-      "tasks": "456",
-      "timer": {
-        "seconds": 2,
-        "minutes": 0,
-        "hours": 0
-      }
-    },
-    {
-      "name": "adwq",
-      "email": "",
-      "date": "03.08.2023",
-      "id": 8
+      "date": "04.08.2023",
+      "id": 7
     }
   ],
   "comments": [

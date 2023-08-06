@@ -6,10 +6,10 @@ import Button from '../../UI/Button';
 import { COLOR_TYPES } from '../../../library/constants.enum';
 import Options from '../../Options';
 import AddTasks from '../../AddTasks';
-import Menu from '../../UI/Button/icons/Menu';
 import Items from '../../Items/Items';
 import { date, dateNow, days, months } from '../../../library/interfaces';
-import Completed from '../Completed';
+import { usePosts } from '../../../hooks/useFilters';
+import Input from '../../UI/Input';
 
 const MyDay = () => {
     const [count, setCount] = useState('');
@@ -18,11 +18,17 @@ const MyDay = () => {
     const [taskBtn, setTaskBtn] = useState(false);
     const { data = [], isLoading } = useGetGoodsQuery(count);
     const [delProduct] = useDeleteProductMutation();
+    const [filter, setFilter] = useState({ sort: '', query: '' });
+    const sortedAndSearchedPosts = usePosts(data, filter.sort, filter.query);
 
-    const handleTaskBtn = async (id: number, name: string) => {
+    const handleTaskBtn = async (id: number, title: string) => {
         setTaskBtn(true);
         setIdTask(id);
-        setNameTask(name);
+        setNameTask(title);
+    };
+
+    const btnProp = (event: string) => {
+        setFilter({ ...filter, sort: event });
     };
 
     const handleDeleteProduct = async (id: React.Key | undefined) => {
@@ -33,23 +39,33 @@ const MyDay = () => {
         <div>
             <div className="Information">
                 <div className="Information__header">
-                    <span>Мой день</span>
-                    <span>
-                        {days[date.getDay()].toLocaleLowerCase()}, {date.getDate()}{' '}
-                        {months[date.getMonth()].toLocaleLowerCase()}
-                    </span>
+                    <div className="Information__header-date">
+                        <span>Мой день</span>
+                        <span>
+                            {days[date.getDay()].toLocaleLowerCase()}, {date.getDate()}{' '}
+                            {months[date.getMonth()].toLocaleLowerCase()}
+                        </span>
+                    </div>
+                    <div className="Information__header-btn">
+                        <Button text="По id" type={COLOR_TYPES.info} onClick={() => btnProp('')} />
+                        <Button
+                            text="По названию"
+                            type={COLOR_TYPES.info}
+                            onClick={() => btnProp('title')}
+                        />
+                    </div>
                 </div>
                 <div className="Information__create">
                     <AddTasks />
                 </div>
 
                 <div>
-                    {data
+                    {sortedAndSearchedPosts
                         .filter(
-                            (item: { id: number; name: string; date?: string }) =>
+                            (item: { id: number; title: string; date?: string }) =>
                                 item.date === dateNow,
                         )
-                        .map((item: { id: number; name: string }) => (
+                        .map((item: { id: number; title: string }) => (
                             <div className="list">
                                 <Button
                                     onClick={() => handleDeleteProduct(item.id)}
@@ -58,13 +74,20 @@ const MyDay = () => {
                                 />
                                 <div
                                     className="list__items"
-                                    onClick={() => handleTaskBtn(item.id, item.name)}>
-                                    <Items name={item.name} id={item.id} />
+                                    onClick={() => handleTaskBtn(item.id, item.title)}>
+                                    <Items title={item.title} id={item.id} />
                                 </div>
                             </div>
                         ))}
                 </div>
             </div>
+            {/* <div>
+                <Input
+                    value={filter.query}
+                    onChange={(e) => setFilter({ ...filter, query: e.target.value })}
+                    placeholder="   Поиск"
+                />
+            </div> */}
             <div className={taskBtn ? 'main active' : 'main'} onClick={(e) => e.stopPropagation()}>
                 <Options
                     data={data}

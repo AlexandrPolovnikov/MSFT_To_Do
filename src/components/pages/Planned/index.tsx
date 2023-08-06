@@ -6,10 +6,8 @@ import Button from '../../UI/Button';
 import { COLOR_TYPES } from '../../../library/constants.enum';
 import Options from '../../Options';
 import AddTasks from '../../AddTasks';
-import Menu from '../../UI/Button/icons/Menu';
 import Items from '../../Items/Items';
-import { date, dateNow, days, months } from '../../../library/interfaces';
-import Completed from '../Completed';
+import { date, days, months } from '../../../library/interfaces';
 
 const Planned = () => {
     const [count, setCount] = useState('');
@@ -19,10 +17,10 @@ const Planned = () => {
     const { data = [], isLoading } = useGetGoodsQuery(count);
     const [delProduct] = useDeleteProductMutation();
 
-    const handleTaskBtn = async (id: number, name: string) => {
+    const handleTaskBtn = async (id: number, title: string) => {
         setTaskBtn(true);
         setIdTask(id);
-        setNameTask(name);
+        setNameTask(title);
     };
 
     const handleDeleteProduct = async (id: React.Key | undefined) => {
@@ -44,7 +42,7 @@ const Planned = () => {
                 </div>
 
                 <div>
-                    {data.map((item: { id: number; name: string }) => (
+                    {data.map((item: { id: number; title: string }) => (
                         <div className="list">
                             <Button
                                 onClick={() => handleDeleteProduct(item.id)}
@@ -53,8 +51,8 @@ const Planned = () => {
                             />
                             <div
                                 className="list__items"
-                                onClick={() => handleTaskBtn(item.id, item.name)}>
-                                <Items name={item.name} id={item.id} />
+                                onClick={() => handleTaskBtn(item.id, item.title)}>
+                                <Items title={item.title} id={item.id} />
                             </div>
                         </div>
                     ))}

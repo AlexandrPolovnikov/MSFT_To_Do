@@ -3,19 +3,30 @@
     grid-template-rows: 150px 50px 1fr;
 
     &__header {
-        width: 140px;
-        margin-left: 20px;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        font-size: 1.2rem;
-        font-weight: 400;
-        margin-top: 50px;
-        :last-child {
-            font-size: 12px;
-            font-weight: 200;
+        justify-content: space-between;
+        &-date {
+            width: 140px;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-top: 50px;
+            :last-child {
+                font-size: 12px;
+                font-weight: 200;
+            }
+        }
+        &-btn {
+            width: 50%;
+            max-width: 300px;
+            display: flex;
+            margin-top: 50px;
+            justify-content: space-around;
         }
     }
 

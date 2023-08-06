@@ -15,9 +15,14 @@ const AddTasks = () => {
     const handleAddProduct = async () => {
         if (newProduct) {
             await addProduct({
-                name: newProduct,
-                email: newEmail,
+                title: newProduct,
+                body: newEmail,
                 date: dateNow,
+                timer: {
+                    seconds: 0,
+                    minutes: 0,
+                    hours: 0,
+                },
             }).unwrap();
             setNewProduct('');
             setNewEmail('');

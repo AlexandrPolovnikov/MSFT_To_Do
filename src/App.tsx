@@ -1,7 +1,6 @@
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
 import routes from './routes';
 import Input from './components/UI/Input';
 import Button from './components/UI/Button';

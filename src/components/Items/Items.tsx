@@ -2,10 +2,10 @@ import React from 'react';
 import Button from '../UI/Button';
 import './index.scss';
 
-const Items = (item: { id: number; name: string }) => {
+const Items = (item: { id: number; title: string }) => {
     return (
         <div className="list__items" key={item.id}>
-            <span> {item.name}</span>
+            <span> {item.title}</span>
         </div>
     );
 };
