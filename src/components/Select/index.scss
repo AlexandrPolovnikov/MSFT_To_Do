@@ -1,0 +1,17 @@
+.container {
+    width: auto;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.sorted {
+    width: auto;
+    height: 30px;
+    border: none;
+    color: rgb(255, 255, 255);
+    background: #11100f;
+    z-index: -1;
+}

@@ -3,13 +3,15 @@ import './index.scss';
 import { useState } from 'react';
 import { useDeleteProductMutation, useGetGoodsQuery } from '../../../redux';
 import Button from '../../UI/Button';
-import { COLOR_TYPES } from '../../../library/constants.enum';
+import { COLOR_TYPES, ICON_NAMES } from '../../../library/constants.enum';
 import Options from '../../Options';
 import AddTasks from '../../AddTasks';
 import Items from '../../Items/Items';
 import { date, dateNow, days, months } from '../../../library/interfaces';
 import { usePosts } from '../../../hooks/useFilters';
 import Input from '../../UI/Input';
+import Select from '../../Select/Select';
+import Sorted from '../../UI/Button/icons/Sorted';
 
 const MyDay = () => {
     const [count, setCount] = useState('');
@@ -25,10 +27,6 @@ const MyDay = () => {
         setTaskBtn(true);
         setIdTask(id);
         setNameTask(title);
-    };
-
-    const btnProp = (event: string) => {
-        setFilter({ ...filter, sort: event });
     };
 
     const handleDeleteProduct = async (id: React.Key | undefined) => {
@@ -47,11 +45,16 @@ const MyDay = () => {
                         </span>
                     </div>
                     <div className="Information__header-btn">
-                        <Button text="По id" type={COLOR_TYPES.info} onClick={() => btnProp('')} />
-                        <Button
-                            text="По названию"
-                            type={COLOR_TYPES.info}
-                            onClick={() => btnProp('title')}
+                        <Select
+                            // value={filter.sort}
+                            onChange={(selectedSort: any) =>
+                                setFilter({ ...filter, sort: selectedSort })
+                            }
+                            // defaultValue="Сортировка"
+                            options={[
+                                { value: '', name: 'По порядку' },
+                                { value: 'title', name: 'По названию' },
+                            ]}
                         />
                     </div>
                 </div>

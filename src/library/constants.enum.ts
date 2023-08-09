@@ -11,5 +11,6 @@ export enum ICON_NAMES {
     box = 'box',
     star = 'star',
     profile = 'profile',
+    sorted = 'sorted',
     menu = 'menu',
 }

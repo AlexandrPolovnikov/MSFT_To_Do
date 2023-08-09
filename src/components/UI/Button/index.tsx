@@ -10,6 +10,7 @@ import Sun from './icons/Sun';
 import './index.scss';
 import { useState } from 'react';
 import Menu from './icons/Menu';
+import Sorted from './icons/Sorted';
 
 interface ButtonProps {
     className?: string;
@@ -46,6 +47,9 @@ const getIcon = (iconName: ICON_NAMES): JSX.Element => {
 
         case ICON_NAMES.menu:
             return <Menu />;
+
+        case ICON_NAMES.sorted:
+            return <Sorted />;
 
         default:
             return <></>;
